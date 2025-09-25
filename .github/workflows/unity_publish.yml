@@ -113,6 +113,16 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           rm -rf unity/Assets/core/upm/Plugins
+      - name: BuildOHOSNodeJS
+        uses: ./.github/workflows/composites/unity-build-plugins/ohos/
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          backend: nodejs_16
+      - name: reset
+        shell: bash
+        run: |
+          cd $GITHUB_WORKSPACE
+          rm -rf unity/Assets/core/upm/Plugins
       - name: BuildOHOSMultBackend
         uses: ./.github/workflows/composites/unity-build-plugins/ohos/
         with:
